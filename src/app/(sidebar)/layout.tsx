@@ -7,6 +7,7 @@ const SidebarLayout = ({ children }) => {
       style={{
         display: "flex",
         flexDirection: "row",
+        minHeight: "100vh",
       }}
     >
       <Sidebar /> {children}

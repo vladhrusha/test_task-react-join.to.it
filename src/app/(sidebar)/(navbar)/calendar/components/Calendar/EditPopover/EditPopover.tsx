@@ -24,7 +24,7 @@ const EditPopover = ({ modalInfo, formData, handleClose, setFormData, handleEdit
       <Stack
         sx={{
           width: "201px",
-          height: "255px",
+          height: "265px",
           padding: "7px",
         }}
       >
@@ -33,6 +33,7 @@ const EditPopover = ({ modalInfo, formData, handleClose, setFormData, handleEdit
           label="event name"
           variant="standard"
           size="small"
+          maxLength={30}
           value={formData.title}
           onChange={(event) => setFormData((prev) => ({ ...prev, title: event.target.value }))}
         />

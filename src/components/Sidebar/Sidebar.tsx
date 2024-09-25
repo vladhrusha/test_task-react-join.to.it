@@ -1,14 +1,75 @@
-import React, { Fragment } from "react";
-
-import { FaSymbol } from "@fortawesome/fontawesome-svg-core";
+"use client";
+import React, { Fragment, use, useEffect, useState } from "react";
 
 import { HomeIcon } from "../Icons/IconsV1";
-import { List, ListItem, Stack } from "@mui/material";
+import { Box, List, ListItem, Stack } from "@mui/material";
 import Link from "next/link";
 
 import { page } from "@/routes/routes";
+import Logo from "./components/Logo";
 
-const sidebarItems = [
+import * as colors from "@/styles/colors";
+import { usePathname } from "next/navigation";
+
+const Sidebar = () => {
+  const pathname = usePathname();
+
+  const [activeItem, setActiveItem] = useState<string>("/home");
+
+  useEffect(() => {
+    sidebarItems.forEach((item) => {
+      if (item.link === pathname) {
+        setActiveItem(item.link);
+      }
+    });
+  }, [pathname]);
+
+  return (
+    <Stack sx={{ minWidth: "260px" }}>
+      <Logo />
+      <List
+        sx={{
+          height: "100%",
+          fontSize: "15px",
+          backgroundColor: colors.secondary.main,
+          color: "white",
+          padding: 0,
+        }}
+      >
+        {sidebarItems.map((item, index) => (
+          <Link key={index} href={item!.link}>
+            <ListItem
+              sx={{
+                width: "100%",
+                backgroundColor: activeItem === item!.link ? colors.secondary.dark : colors.secondary.main,
+                "&:hover": {
+                  backgroundColor: colors.secondary.dark,
+                  cursor: "pointer",
+                },
+              }}
+              onClick={() => setActiveItem(item!.link)}
+            >
+              <Stack flexDirection="row" columnGap="10px" sx={{ width: "inherit" }}>
+                <item.icon />
+                {item!.label}
+              </Stack>
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+    </Stack>
+  );
+};
+
+export default Sidebar;
+
+type SidebarItem = {
+  label: string;
+  icon: React.FC;
+  link: string;
+};
+
+const sidebarItems: SidebarItem[] = [
   {
     label: "Home",
     icon: HomeIcon,
@@ -64,32 +125,3 @@ const sidebarItems = [
     link: page.settings.path,
   },
 ];
-
-const Sidebar = () => {
-  return (
-    <Stack sx={{ height: "100vh" }}>
-      <h1
-        style={{
-          color: "white",
-          fontSize: "1.5rem",
-          padding: "1rem",
-          backgroundColor: "#43425D",
-        }}
-      >
-        IMPEKABLE
-      </h1>
-      <List sx={{ height: "100%", fontSize: "15px", backgroundColor: "#43425D", color: "white" }}>
-        {sidebarItems.map((item, index) => (
-          <ListItem key={index}>
-            <Link href={item.link}>
-              <item.icon />
-              {item.label}
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-    </Stack>
-  );
-};
-
-export default Sidebar;

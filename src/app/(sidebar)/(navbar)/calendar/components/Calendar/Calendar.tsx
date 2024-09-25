@@ -35,22 +35,11 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import SavePopover from "./SavePopover";
 import EditPopover from "./EditPopover";
 
+import * as colors from "@/styles/colors";
+
 const localizer = momentLocalizer(moment);
 
 let idCounter = 1000000;
-
-const events = [
-  {
-    start: moment("2024-09-18T10:00:00").toDate(),
-    end: moment("2024-09-18T10:00:00").toDate(),
-    title: "MRI Registration",
-  },
-  {
-    start: moment("2023-03-18T14:00:00").toDate(),
-    end: moment("2023-03-18T15:30:00").toDate(),
-    title: "ENT Appointment",
-  },
-];
 
 type Event = {
   id: string;
@@ -59,6 +48,7 @@ type Event = {
   title: string;
   description: string;
   color: string;
+  isDraggable: boolean;
 };
 
 const initialEvents: Event[] = [
@@ -69,6 +59,7 @@ const initialEvents: Event[] = [
     title: "MRI Registration",
     description: "MRI Registration",
     color: "white",
+    isDraggable: true,
   },
   {
     id: "2",
@@ -77,6 +68,7 @@ const initialEvents: Event[] = [
     title: "ENT Appointment",
     description: "ENT Appointment",
     color: "white",
+    isDraggable: true,
   },
 ];
 
@@ -120,6 +112,7 @@ export default function Calendar(props: Omit<CalendarProps, "localizer">) {
         description,
         color: "white",
         id: String(idCounter + -1),
+        isDraggable: true,
       },
     ]);
     idCounter--;
@@ -192,7 +185,7 @@ export default function Calendar(props: Omit<CalendarProps, "localizer">) {
   };
 
   return (
-    <Fragment>
+    <Stack sx={{ backgroundColor: colors.primary.main, padding: "15px" }}>
       <SavePopover
         modalInfo={modalInfo}
         formData={formData}
@@ -208,6 +201,8 @@ export default function Calendar(props: Omit<CalendarProps, "localizer">) {
         handleEdit={onEdit}
         handleDelete={onDelete}
       />
+
+      <h3 style={{ padding: "10px 0px", color: colors.primary.text, fontWeight: "normal" }}>Calendar View</h3>
 
       <BigCalendar
         {...props}
@@ -225,8 +220,9 @@ export default function Calendar(props: Omit<CalendarProps, "localizer">) {
         selectable={true}
         onSelectSlot={handleSlotClick}
         onSelectEvent={handleEventClick}
+        style={{ height: "859px", width: "1170px" }}
       />
-    </Fragment>
+    </Stack>
   );
 }
 
