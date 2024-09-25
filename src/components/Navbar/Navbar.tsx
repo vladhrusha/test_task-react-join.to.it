@@ -17,7 +17,6 @@ const Navbar = () => {
     >
       <FormControl>
         <Input
-          id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">
               <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" height={24} />
@@ -34,7 +33,7 @@ const Navbar = () => {
 
       <Stack flexDirection="row">
         <p>John Doe</p>
-        <Image src={Avatar} width="38" height="38" />
+        <Image src={Avatar} alt="avatar" width="38" height="38" />
       </Stack>
     </Stack>
   );
