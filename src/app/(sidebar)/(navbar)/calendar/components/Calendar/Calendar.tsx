@@ -4,6 +4,6 @@ import moment from "moment";
 
 const localizer = momentLocalizer(moment);
 
-export default function Calendar(props) {
+export default function Calendar(props: Omit<CalendarProps, "localizer">) {
   return <BigCalendar {...props} localizer={localizer} />;
 }
