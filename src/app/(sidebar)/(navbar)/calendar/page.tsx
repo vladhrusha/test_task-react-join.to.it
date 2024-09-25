@@ -4,7 +4,7 @@ import Calendar from "../calendar/components/Calendar/Calendar";
 
 const page = () => {
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <Calendar />
     </div>
   );
