@@ -15,8 +15,8 @@ const EditPopover = ({ modalInfo, formData, handleClose, setFormData, handleEdit
       aria-describedby="modal-modal-description"
       sx={{
         position: "absolute",
-        top: modalInfo.top,
-        left: modalInfo.left,
+        top: "600px",
+        left: "800px",
         backgroundColor: "white",
         width: "230px",
         height: "320px",
