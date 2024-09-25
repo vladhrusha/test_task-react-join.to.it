@@ -107,9 +107,7 @@ export default function Calendar(props: Omit<CalendarProps, "localizer">) {
     });
     handleClose();
   };
-  const onEdit = (event) => {
-    console.log(formData);
-
+  const onEdit = () => {
     setEvents((prevEvents) =>
       prevEvents.map((e) =>
         e.id === selectedEventId
