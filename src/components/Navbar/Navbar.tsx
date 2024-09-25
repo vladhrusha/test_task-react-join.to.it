@@ -1,4 +1,4 @@
-import { Divider, FormControl, Input, InputAdornment, Stack, TextField } from "@mui/material";
+import { Divider, FormControl, Input, InputAdornment, Stack } from "@mui/material";
 import React from "react";
 import { faMagnifyingGlass, faBell, faComments, faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

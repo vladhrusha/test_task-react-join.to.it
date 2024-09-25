@@ -1,37 +1,10 @@
-import {
-  Calendar as BigCalendar,
-  CalendarProps,
-  momentLocalizer,
-  DateLocalizer,
-  Views,
-} from "react-big-calendar";
+import { Calendar as BigCalendar, CalendarProps, momentLocalizer, DateLocalizer } from "react-big-calendar";
 import PropTypes from "prop-types";
 
 import moment from "moment";
-import { Fragment, useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Dialog,
-  InputAdornment,
-  Modal,
-  Popover,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCalendar,
-  faCircle,
-  faCircleXmark,
-  faClock,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Stack } from "@mui/material";
 
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { DatePicker, DesktopDatePicker, DesktopTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import SavePopover from "./SavePopover";
 import EditPopover from "./EditPopover";
 
